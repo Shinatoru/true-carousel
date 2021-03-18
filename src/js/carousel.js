@@ -72,21 +72,6 @@ function carousel({
     addClasses();
   }
 
-  slides.forEach(item => {
-
-    item.addEventListener('click', e => {
-      const target = e.currentTarget;
-
-      if (target && target.classList.contains('prev')) {
-        update('prev');
-      }
-
-      if (target && target.classList.contains('next')) {
-        update('next');
-      }
-    });
-  });
-
   addClasses();
   if (arrows) { createArrows(); }
 
