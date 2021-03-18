@@ -1,28 +1,31 @@
 .container {
-  transform-style: preserve-3d;
-
+  padding-top: 20vh;
+  
   .true-carousel {
-    position: relative;
-    max-width: 980px;
+    transform-style: preserve-3d;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 565px;
+    justify-content: space-between;
+    height: 600px;
 
     div {
       position: absolute;
-      width: 317px;
+      max-width: 600px;
       height: 100%;
       left: 0;
       right: 0;
       margin: auto;
       transition: transform .4s ease, opacity .2s, z-index .4s ease;
       box-shadow: 0 20px 30px rgba($color: #000, $alpha: .2);
-      cursor: pointer;
+      border-radius: 50px;
 
       img {
-        max-width: 500px;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
       }
     }
 
@@ -45,7 +48,6 @@
     }
 
     .arrow {
-      position: absolute;
       border: none;
       background-color: rgba($color: #000, $alpha: 0.0);
       height: 52px;
@@ -56,12 +58,10 @@
 
     .left-arrow {
       background-image: url("../images/left-arrow.png");
-      left: 0;
     }
 
     .right-arrow {
       background-image: url("../images/right-arrow.png");
-      right: 0;
     }
   }
 }
