@@ -44,9 +44,9 @@ function carousel({
   }
 
   function removeClasses() {
-    parent.querySelector('.true-carousel-current').classList.remove('true-carousel-current');
-    parent.querySelector('.true-carousel-prev').classList.remove('true-carousel-prev');
-    parent.querySelector('.true-carousel-next').classList.remove('true-carousel-next');
+    slides[currentIndex].classList.remove('true-carousel-current');
+    if (infinite || currentIndex != 0) { parent.querySelector('.true-carousel-prev').classList.remove('true-carousel-prev'); }
+    if (infinite || currentIndex != lastIndex) { parent.querySelector('.true-carousel-next').classList.remove('true-carousel-next'); }
   }
   
   function update(method) {
