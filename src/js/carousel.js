@@ -2,10 +2,13 @@ function carousel({
   parentSelector = '.true-carousel',
   currentIndex = 1,
   arrows = true,
-  infinite = true
+  infinite = true,
+  swipe = true
 } = {}) {
   const parent = document.querySelector(parentSelector);
-  const slides = parent.querySelectorAll('div');
+  parent.innerHTML = `<div class="true-carousel__inner">${parent.innerHTML}</div>`;
+  const container = parent.querySelector('.true-carousel__inner');
+  const slides = container.querySelectorAll('div');
   const lastIndex = slides.length - 1;
 
   function createArrows() {
@@ -45,8 +48,8 @@ function carousel({
 
   function removeClasses() {
     slides[currentIndex].classList.remove('true-carousel-current');
-    if (infinite || currentIndex != 0) { parent.querySelector('.true-carousel-prev').classList.remove('true-carousel-prev'); }
-    if (infinite || currentIndex != lastIndex) { parent.querySelector('.true-carousel-next').classList.remove('true-carousel-next'); }
+    if (infinite || currentIndex != 0) { container.querySelector('.true-carousel-prev').classList.remove('true-carousel-prev'); }
+    if (infinite || currentIndex != lastIndex) { container.querySelector('.true-carousel-next').classList.remove('true-carousel-next'); }
   }
   
   function update(method) {
@@ -72,9 +75,45 @@ function carousel({
     addClasses();
   }
 
-  addClasses();
-  if (arrows) { createArrows(); }
+  function enableSwipe() {
+    let x0 = null;
 
+    function unify(e) { return e.changedTouches ? e.changedTouches[0] : e; }
+
+    function lock(e) {
+      x0 = unify(e).clientX;
+    }
+
+    function move(e) {
+      if (x0 || x0 === 0) {
+        let dx = unify(e).clientX - x0
+        let s = Math.sign(dx);
+
+        if (Math.abs(dx) > 10) {
+          if (s < 0) {
+            update('next');
+          } else if (s > 0) {
+            update('prev');
+          }
+        }
+      }
+    }
+
+    container.addEventListener('mousedown', lock, false);
+    container.addEventListener('touchstart', lock, false);
+
+    container.addEventListener('mouseup', move, false);
+    container.addEventListener('touchend', move, false);
+  }
+
+  function init() {
+    
+    if (swipe) { enableSwipe(); }
+    if (arrows) { createArrows(); }
+    addClasses();
+  }
+
+  init();
 }
 
 export default carousel;
