@@ -110,7 +110,10 @@ function carousel({
     
     if (swipe) { enableSwipe(); }
     if (arrows) { createArrows(); }
-    slides.forEach(slide => slide.setAttribute('draggable', 'false'));
+    slides.forEach(slide => {
+      slide.setAttribute('draggable', 'false');
+      slide.classList.add('true-slide');
+    });
     addClasses();
   }
 
