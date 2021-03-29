@@ -13,14 +13,14 @@
 
     .true-carousel__inner {
       transform-style: preserve-3d;
-      width: 100%;
+      width: 80%;
       height: 100%;
       overflow: hidden;
 
       .true-slide {
         position: absolute;
         width: 600px;
-        height: 100%;
+        height: 600px;
         left: 0;
         right: 0;
         transform: scale(.6);
