@@ -2,5 +2,5 @@ import '../sass/style.scss';
 import carousel from './carousel';
 
 window.addEventListener('DOMContentLoaded', () => {
-  carousel({infinite: false});
+  carousel({infinite: false, arrows: false});
 });
