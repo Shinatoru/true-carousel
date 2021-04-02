@@ -1,11 +1,10 @@
 function carousel({
-  parentSelector = '.true-carousel',
   currentIndex = 1,
   arrows = true,
   infinite = true,
   swipe = true
 } = {}) {
-  const parent = document.querySelector(parentSelector);
+  const parent = document.querySelector('.true-carousel');
   parent.innerHTML = `<div class="true-carousel__inner">${parent.innerHTML}</div>`;
   const container = parent.querySelector('.true-carousel__inner');
   const slides = container.querySelectorAll('div');
@@ -112,7 +111,7 @@ function carousel({
     if (arrows) { createArrows(); }
     slides.forEach(slide => {
       slide.setAttribute('draggable', 'false');
-      slide.classList.add('true-slide');
+      slide.classList.add('true-carousel-slide');
     });
     addClasses();
   }
