@@ -1,82 +1,109 @@
-.container {
-  padding-top: 20vh;
-  max-width: 1200px;
-  height: 600px;
+.true-carousel {
   margin: 0 auto;
-  
-  .true-carousel {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 850px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 400px;
+
+  .true-carousel__inner {
+    transform-style: preserve-3d;
+    width: 660px;
     height: 100%;
+    overflow: hidden;
+    margin: 0 auto;
 
-    .true-carousel__inner {
-      transform-style: preserve-3d;
-      width: 80%;
-      height: 100%;
-      overflow: hidden;
-      margin: 0 auto;
+    .true-carousel-slide {
+      position: absolute;
+      width: 400px;
+      height: inherit;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      transform: scale(.6);
+      opacity: 0;
+      z-index: -1;
+      margin: auto;
+      transition: transform .4s ease, opacity .2s, z-index .4s ease;
 
-      .true-slide {
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        left: 0;
-        right: 0;
-        transform: scale(.6);
-        opacity: 0;
-        z-index: -1;
-        margin: auto;
-        transition: transform .4s ease, opacity .2s, z-index .4s ease;
-        box-shadow: 0 20px 30px rgba($color: #000, $alpha: .2);
-        border-radius: 50px;
-  
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          border-radius: 50px;
-          pointer-events: none;
-          user-select: none;
-        }
-      }
-  
-      .true-carousel-current {
-        transform: translatex(0) scale(1);
-        opacity: 1;
-        z-index: 1;
-      }
-      
-      .true-carousel-prev {
-        transform: translatex(-40%) scale(.8);
-        opacity: .4;
-        z-index: 0;
-      }
-  
-      .true-carousel-next {
-        transform: translatex(40%) scale(.8);
-        opacity: .4;
-        z-index: 0;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+        user-select: none;
       }
     }
 
-    .arrow {
-      border: none;
-      outline: none;
-      background-color: rgba($color: #000, $alpha: 0.0);
-      height: 52px;
-      width: 28px;
-      background-size: cover;
-      cursor: pointer;
+    .true-carousel-current {
+      transform: translatex(0) scale(1);
+      opacity: 1;
+      z-index: 1;
+    }
+    
+    .true-carousel-prev {
+      transform: translatex(-40%) scale(.8);
+      opacity: .4;
+      z-index: 0;
     }
 
-    .left-arrow {
-      background-image: url("../images/left-arrow.png");
+    .true-carousel-next {
+      transform: translatex(40%) scale(.8);
+      opacity: .4;
+      z-index: 0;
     }
+  }
 
-    .right-arrow {
-      background-image: url("../images/right-arrow.png");
-    }
+  .arrow {
+    border: none;
+    outline: none;
+    background-color: rgba($color: #000, $alpha: 0.0);
+    height: 52px;
+    width: 28px;
+    background-size: cover;
+    cursor: pointer;
+  }
+
+  .left-arrow {
+    background-image: url("../images/left-arrow.png");
+  }
+
+  .right-arrow {
+    background-image: url("../images/right-arrow.png");
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .true-carousel {
+    width: 650px;
+    height: 300px;
+
+     .true-carousel__inner {
+      width: 490px;
+
+      .true-carousel-slide {
+        width: 300px;
+      }
+     }
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .true-carousel {
+    width: 90vw;
+    height: 50vw;
+
+     .true-carousel__inner {
+      width: 100%;
+
+      .true-carousel-slide {
+        width: 50vw;
+      }
+     }
+
+     .arrow {
+      display: none;
+     }
   }
 }
