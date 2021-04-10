@@ -11,17 +11,25 @@ function carousel({
   const lastIndex = slides.length - 1;
 
   function createArrows() {
-    const leftArrow = document.createElement('button');
-    const rightArrow = document.createElement('button');
+    const buttonLeft = document.createElement('button');
+    const arrowLeft = document.createElement('div');
+    const buttonRight = document.createElement('button');
+    const arrowRight = document.createElement('div');
 
-    leftArrow.classList.add('arrow', 'left-arrow');
-    rightArrow.classList.add('arrow', 'right-arrow');
+    buttonLeft.classList.add('arrow');
+    arrowLeft.classList.add('left-arrow');
+    buttonLeft.append(arrowLeft);
+
+    buttonRight.classList.add('arrow');
+    arrowRight.classList.add('right-arrow');
+    buttonRight.append(arrowRight);
     
-    parent.prepend(leftArrow);
-    parent.append(rightArrow);
+    parent.prepend(buttonLeft);
+    parent.append(buttonRight);
 
-    leftArrow.addEventListener('click', () => update('prev'));
-    rightArrow.addEventListener('click', () => update('next'));
+    buttonLeft.addEventListener('click', () => update('prev'));
+    buttonRight.addEventListener('click', () => update('next'));
+  
   }
 
   function addClasses() {
